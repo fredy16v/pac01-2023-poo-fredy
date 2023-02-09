@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace basico
@@ -22,7 +23,17 @@ namespace basico
 
             //CondicionIf condicionIf = new CondicionIf();
 
-            Promedios promedios = new Promedios();
+            //Promedios promedios = new Promedios();
+
+            //Vocales vocales = new Vocales();
+
+            //ListarNumeros01 listarNumeros01 = new ListarNumeros01();
+
+            //ListarNumeros03 listarNumeros03 = new ListarNumeros03();
+
+            //ListarNumeros04 listarNumero04 = new ListarNumeros04();
+
+            ListarNumeros05 listarNumeros05 = new ListarNumeros05();
 
             Console.ReadKey(); // espera una tecla para continuar 
         }
