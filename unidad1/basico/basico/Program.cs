@@ -1,4 +1,5 @@
-﻿using basico.estructuras_control;
+﻿using basico.arreglos;
+using basico.estructuras_control;
 using basico.tipo_datos;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,11 @@ namespace basico
 
             //ListarNumeros04 listarNumero04 = new ListarNumeros04();
 
-            ListarNumeros05 listarNumeros05 = new ListarNumeros05();
+            //ListarNumeros05 listarNumeros05 = new ListarNumeros05();
+
+            //Arreglo01 arreglo01 = new Arreglo01();
+
+            Arreglo02 arreglo02 = new Arreglo02();
 
             Console.ReadKey(); // espera una tecla para continuar 
         }

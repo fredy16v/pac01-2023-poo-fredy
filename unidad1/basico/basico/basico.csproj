@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="arreglos\Arreglo02.cs" />
+    <Compile Include="arreglos\Arreglo01.cs" />
     <Compile Include="estructuras-control\CondicionIf.cs" />
     <Compile Include="estructuras-control\ListarNumeros04.cs" />
     <Compile Include="estructuras-control\ListarNumeros01.cs" />
