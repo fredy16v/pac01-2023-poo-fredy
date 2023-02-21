@@ -38,7 +38,9 @@ namespace basico
 
             //Arreglo01 arreglo01 = new Arreglo01();
 
-            Arreglo02 arreglo02 = new Arreglo02();
+            //Arreglo02 arreglo02 = new Arreglo02();
+
+            Arreglo03 arreglo03 = new Arreglo03();
 
             Console.ReadKey(); // espera una tecla para continuar 
         }
