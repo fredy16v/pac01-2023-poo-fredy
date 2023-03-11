@@ -1,0 +1,47 @@
+﻿@*@model Persona*@
+@model HomeIndexViewModel
+
+@*{
+    //ViewData["Title"] = "Home Page";
+
+    //string ConvertirEnMayusculas(string valor)
+    //{
+    //    return valor.ToUpper();
+    //}
+
+    //DateTime hoy = DateTime.Now;
+
+    //var nombres = new List<string>() { "Juan Perez", "Maria Mejia", "Carlos Lopez" };
+}*@
+
+
+@*Bloque de Presentacion*@
+@Html.Partial("_Presentacion")
+
+@*Bloque Experiencias*@
+@Html.Partial("_Experiencia")
+
+@*Listado de Proyectos*@
+<partial name = "_Proyectos" model = "Model.Proyectos"/>
+
+
+
+
+
+
+
+@*@if (Model.Edad >= 18)
+    {
+        <h5>Eres mayor de edad, pero no puedes viajar fuera de Honduras</h5>
+    }
+    else
+    {
+        <h5>Usted esta peor</h5>
+    }
+
+    <ul>
+        @foreach (var nombre in nombres)
+        {
+            <li>@nombre</li>
+        }
+    </ul>*@

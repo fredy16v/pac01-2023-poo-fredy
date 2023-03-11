@@ -1,0 +1,27 @@
+﻿@model Tarea
+
+<div class="row justify-content-center">
+    <div class="w-50">
+        <h2 class="text-center">@ViewData["Text"] Tarea</h2>
+        <form method="post" asp-action="@ViewData["Action"]" class="row align-self-center">
+            <div class="row">
+                <label class="form-range" for="Titulo">Titulo</label>
+                <input class="form-control" asp-for="Titulo" type="text" />
+            </div>
+
+            <div class="row">
+                <label class="form-range" for="Descripcion">Descripcion</label>
+                <input class="form-control" asp-for="Descripcion" type="text" />
+            </div>
+
+            <div class="row">
+                <label class="form-range" for="FechaDeVencimiento">Fecha de Vencimiento</label>
+                <input class="form-control" asp-for="FechaDeVencimiento" type="datetime-local" />
+            </div>
+
+            <div class="row mt-3">
+                <button class="btn btn-primary" type="submit">@ViewData["Text"]</button>
+            </div>
+        </form>
+    </div>
+</div>
