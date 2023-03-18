@@ -57,7 +57,7 @@ namespace ExamenUnidad2FredyVasquezYJoseContreras.Controllers
 			//{
 			//	return View("Index", alumno);
 			//}
-			//_repositorioAlumnos.AgregarAlumno(alumno);
+			_repositorioAlumnos.AgregarAlumno(alumno);
 
 			return RedirectToAction("Listado");
 		}
