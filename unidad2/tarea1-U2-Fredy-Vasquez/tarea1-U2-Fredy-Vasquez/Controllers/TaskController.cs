@@ -36,6 +36,10 @@ namespace tarea1_U2_Fredy_Vasquez.Controllers
         [HttpPost]
         public IActionResult Crear(Models.Tarea task)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("CrearFormulario", task);
+			}
             repositorioTask.AgregarTask(task);
 
             return RedirectToAction("Index");
@@ -49,8 +53,12 @@ namespace tarea1_U2_Fredy_Vasquez.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(Tarea tarea)
+        public IActionResult Editar(Models.Tarea tarea)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("FormularioEditar", tarea);
+            }
             repositorioTask.ActualizarTask(tarea);
 
             return RedirectToAction("Index");

@@ -1,0 +1,58 @@
+﻿@model AlumnosViewModel
+
+@{
+	ViewData["Title"] = "Lista";
+}
+
+<div class="container">
+	<h2>Lista de Alumnos</h2>
+</div>
+
+<partial name="_ListaAlumnos" model="@Model.Alumnos"/>
+
+
+@*<div class="row justify-content-center justify-content-lg-start mt-3 gap-3">
+	<h3>Lista de Asistencia</h3>
+	<div class="col">
+		<h4>Alumno</h4>
+	</div>
+	<div class="col">
+		<h4>Apellido</h4>
+	</div>
+	<div class="col">
+		<h4>Numero de Cuenta</h4>
+	</div>
+	<div class="col">
+		<h4>Presente</h4>
+	</div>
+	<div class="col">
+		<h4>Inasistente</h4>
+	</div>
+	@foreach (Alumno alumno in Model)
+	{
+		<div class="row">
+			<div class="col">
+				<h5>@alumno.Nombre</h5>
+			</div>
+
+			<div class="col">
+				<h5>@alumno.Apellido</h5>
+			</div>
+
+			<div class="col">
+				<h5>@alumno.NumeroDeCuenta</h5>
+			</div>
+
+			<div class="col">
+				<input type="checkbox" name="Asistencia" value="yes" />
+			</div>
+
+			<div class="col">
+				<input type="checkbox" name="Asistencia" value="no" />
+			</div>
+
+		</div>
+
+		<button class="btn btn-primary" type="submit">Enviar</button>
+	}
+</div>*@
