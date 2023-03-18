@@ -2,35 +2,45 @@
 
 @if (Model.Count() != 0)
 {
-	<div class="row justify-content-center justify-content-lg-start mt-3 gap-3">
-		<h3>Lista de Asistencia</h3>
-		<div class="col">
+	<div class="row justify-content-center justify-content-lg-start mt-3">
+
+		<div class="col custom-col-cabecera">
 			<h4>Alumno</h4>
 		</div>
-		<div class="col">
+		<div class="col custom-col-cabecera">
 			<h4>Apellido</h4>
 		</div>
-		<div class="col">
+		<div class="col custom-col-cabecera text-center">
 			<h4>Numero de Cuenta</h4>
 		</div>
-		<div class="col">
+		<div class="col custom-col-cabecera">
 			<h4>Presente</h4>
 		</div>
-		<div class="col">
-			<h4>Inasistente</h4>
+		<div class="col custom-col-cabecera">
+			<h4>Ausente</h4>
 		</div>
-		@foreach (Alumno alumno in Model)
-		{
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">@alumno.Nombre</h5>
-					<h5 class="card-title">@alumno.Apellido</h5>
-					<h5 class="card-title">@alumno.NumeroDeCuenta</h5>
-					<h5 class="card-title"><input type="checkbox" checked="@alumno.Presente" disabled class="form-check-input" /></h5>
-				</div>
-			</div>
-		}
 	</div>
+
+	@foreach (Alumno alumno in Model)
+	{
+		<div class="row justify-content-center justify-content-lg-start">
+			<div class="col custom-col">
+				<h5>@alumno.Nombre</h5>
+			</div>
+			<div class="col custom-col">
+				<h5>@alumno.Apellido</h5>
+			</div>
+			<div class="col custom-col">
+				<h5>@alumno.NumeroDeCuenta</h5>
+			</div>
+			<div class="col custom-col">
+				<h5><input type="checkbox" checked="@alumno.Presente" disabled class="form-check-input" style="background-color: green;"/></h5>
+			</div>
+			<div class="col custom-col">
+				<h5><input type="checkbox" checked="@alumno.Ausente" disabled class="form-check-input" style="background-color: red;"/></h5>
+			</div>
+		</div>
+	}
 }
 else
 {

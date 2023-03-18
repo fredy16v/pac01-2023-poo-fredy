@@ -13,5 +13,6 @@ namespace ExamenUnidad2FredyVasquezYJoseContreras.Models
 
 		public bool Presente { get; set; }
 
-    }
+		public bool Ausente { get; set; }
+	}
 }

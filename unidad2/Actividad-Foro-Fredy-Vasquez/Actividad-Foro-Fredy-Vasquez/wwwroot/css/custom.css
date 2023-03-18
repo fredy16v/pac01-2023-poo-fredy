@@ -1,0 +1,92 @@
+﻿.custom-card {
+    width: 369px;
+    border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 10px 10px 20px #b1b1b1, -10px -10px 20px #ffffff;
+}
+
+.custom-button {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px #293d5e, -5px -5px 5px #ffffff;
+}
+
+.icono {
+    display: block;
+    z-index: 3;
+    margin-left: 9.1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 10px 10px 14px #a7aaaf, -10px -10px 14px #ffffff;
+}
+
+.custom-cardVR {
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 10px 10px 14px #909294, -10px -10px 14px #ffffff;
+}
+
+.custom-logoVR {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 2px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 10px 10px 14px #a7aaaf, -10px -10px 14px #ffffff;
+}
+
+.custom-inputVR {
+    height: 40px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    margin: 5px 2.5px;
+    padding-left: 2.5rem;
+    border-radius: 30px;
+    background: #ecf0f3;
+    box-shadow: inset 10px 10px 10px #b1b4b6, inset -10px -10px 10px #ffffff;
+    position: relative;
+}
+
+.svgVR {
+    height: 20px;
+}
+
+.iconoVR {
+    position: absolute;
+    display: block;
+    width: 20px;
+    z-index: 3;
+    align-self: center;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.custom-buttonVR {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    background: blue;
+    box-shadow: 5px 5px 6px #b3b6b9, -5px -5px 6px #ffffff;
+}
+
+.error-messajeVR {
+    position: absolute;
+    bottom: -0.9rem;
+    left: 1rem;
+    z-index: 3;
+}

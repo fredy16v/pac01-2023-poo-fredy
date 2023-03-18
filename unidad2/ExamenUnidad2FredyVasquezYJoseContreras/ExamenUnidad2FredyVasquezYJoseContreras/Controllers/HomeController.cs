@@ -18,14 +18,6 @@ namespace ExamenUnidad2FredyVasquezYJoseContreras.Controllers
 
 		public IActionResult Index()
 		{
-			//var alumnos = _repositorioAlumnos.ObtnerAlumnos();
-
-			//var alumnosViewModel = new AlumnosViewModel
-			//{
-			//	Alumnos = alumnos.ToList(),
-			//};
-
-			//return View(alumnosViewModel);
 			return View();
 		}
 
@@ -49,14 +41,10 @@ namespace ExamenUnidad2FredyVasquezYJoseContreras.Controllers
 		[HttpPost]
 		public IActionResult Crear (Models.Alumno alumno)
 		{
-			Console.WriteLine(alumno.Nombre);
-			Console.WriteLine(alumno.Apellido);
-			Console.WriteLine(alumno.NumeroDeCuenta);
-			Console.WriteLine(alumno.Presente);
-			//if (!ModelState.IsValid)
-			//{
-			//	return View("Index", alumno);
-			//}
+			if (!ModelState.IsValid)
+			{
+				return View("Index", alumno);
+			}
 			_repositorioAlumnos.AgregarAlumno(alumno);
 
 			return RedirectToAction("Listado");
