@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Cargo>
+
+@{
+	ViewData["Title"] = "Listado Cargos";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h5>Los cargos de usaran para agrupar a los empreados segun su cargo. Ejemplos: Gerentes General, Gerente de ventas, Analista de datos, etc.</h5>
+
+<a asp-action="Crear" class="btn btn-primary">Crear Nuevo</a>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Acciones</th>
+			<th>Nombre</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var cargo in Model)
+		{
+			<tr>
+				<td>
+					<input type="hidden" asp-for="@cargo.Id" />
+					<a asp-action="Editar" asp-route-id="@cargo.Id" class="btn btn-primary" >Editar</a>
+					<a asp-action="Borrar" asp-route-id="@cargo.Id" class="btn btn-danger" >Borrar</a>
+				</td>
+				<td>@cargo.Nombre</td>
+			</tr>
+		}
+	</tbody>
+
+</table>
+
+@*@section Scripts{
+	<script>
+
+		const urlOrdenar = '@Url.Action("Ordenar")';
+
+		$(function () {
+			$("#reordenable").sortable({
+				stop: async function (e, ui) {
+					await actualizarOrdenes();
+				}
+			});
+
+			async function actualizarOrdenes() {
+				const ids = obtenerIdsDeElementos();
+				await enviarIdsAlBackend(ids);
+			}
+
+			function obtenerIdsDeElementos() {
+				const ids = $('.ids').map(function () {
+					//console.log($(this).val());
+					return $(this).val();
+				}).get();
+
+				return ids;
+			}
+
+			async function enviarIdsAlBackend(ids) {
+				var data = JSON.stringify(ids);
+				await fetch(urlOrdenar, {
+					method: 'POST',
+					body: data,
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+			}
+		})
+	</script>
+}*@
