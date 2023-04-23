@@ -1,12 +1,11 @@
-CREATE PROCEDURE Cargos_Insertar
-	@Nombre NVARCHAR(50),
-	@UsuarioId INT
-AS
-BEGIN
-	SET NOCOUNT ON;
+INSERT INTO Cargos
+(Nombre, UsuarioId, Codigo)
+VALUES
+('Gerente de Ventas', 1, 'GVEN');
+SELECT SCOPE_IDENTITY();
 
-	INSERT INTO Cargos (Nombre, UsuarioId)
-	VALUES (@Nombre, @UsuarioId);
+SELECT * FROM Cargos
 
-	Select SCOPE_IDENTITY();
-END
+SELECT 1
+FROM Cargos
+WHERE Nombre = 'Gerente de Ventas' AND UsuarioId = 1

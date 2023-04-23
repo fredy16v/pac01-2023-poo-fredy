@@ -19,22 +19,21 @@ namespace GestionRecursosHumanos.Servicios
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryAsync<Cargo>
-				(@"SELECT Id, Nombre, Codigo
+				(@"SELECT Id, Nombre, Codigo, Descripcion
 				FROM Cargos
 				WHERE UsuarioId = @UsuarioId", new { usuarioId });
 		}
+
 		public async Task<Cargo> Crear(Cargo cargo)
 		{
 			using var connection = new SqlConnection(connectionString);
-			var id = await connection.QuerySingleAsync<int>
+			await connection.QuerySingleAsync<int>
 				($@"INSERT INTO Cargos
-                (Nombre, UsuarioId, Codigo)
+                (Nombre, UsuarioId, Codigo, Descripcion)
                 VALUES
-                (@Nombre, @UsuarioId, @Codigo);
+                (@Nombre, @UsuarioId, @Codigo, @Descripcion);
                 SELECT SCOPE_IDENTITY();",
 				cargo);
-
-			cargo.Id = id;
 
 			return cargo;
 		}
@@ -44,7 +43,7 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 			await connection.ExecuteAsync
 				(@"UPDATE Cargos 
-				SET Nombre = @Nombre, Codigo = @Codigo
+				SET Nombre = @Nombre, Codigo = @Codigo, Descripcion = @Descripcion
 				WHERE Id = @Id", cargo);
 		}
 
@@ -52,7 +51,7 @@ namespace GestionRecursosHumanos.Servicios
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryFirstOrDefaultAsync<Cargo>
-				(@"SELECT Id, Nombre, Codigo
+				(@"SELECT Id, Nombre, Codigo, Descripcion
 				FROM Cargos
 				WHERE Id = @Id AND UsuarioId = @UsuarioId", new { id, usuarioId });
 		}
@@ -61,13 +60,13 @@ namespace GestionRecursosHumanos.Servicios
 		public async Task<bool> Existe(string nombre, int usuarioId)
 		{
 			using var connection = new SqlConnection(connectionString);
-			var existe = await connection.QueryFirstOrDefaultAsync<int>
+			var existe = await connection.QueryFirstOrDefaultAsync<bool>
 				(@"SELECT 1
 				FROM Cargos
 				WHERE Nombre = @Nombre AND UsuarioId = @UsuarioId",
 				new { nombre, usuarioId });
 
-			return existe == 1;
+			return existe;
 		}
 
 		public async Task Borrar(int id)

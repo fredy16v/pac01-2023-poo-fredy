@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Empleado>
+
+@{
+	ViewData["Title"] = "Lista de Empleados";
+}
+
+<h1>@ViewData["Title"]</h1>
+<a asp-action="Crear" class="btn btn-primary">Crear Nuevo</a>
+
+<div class="row justify-content-center justify-content-lg-start mt-3 gap-3">
+	@foreach (var empleado in Model)
+	{
+		<div class="card col-4 p-0">
+			<div class="card-body">
+				
+				<h5 class="card-title text-center mt-1">@empleado.Nombre</h5>
+				<h6 class="card-subtitle mb-2 text-center">@empleado.FechaNacimiento</h6>
+				<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
+				<h6 class="card-subtitle mb-2 text-center">@empleado.Email</h6>
+				<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
+				<h6 class="card-subtitle text-center">@empleado.Departamento</h6>
+			</div>
+			<div>
+				<div class="row justify-content-center mb-2">
+					<input type="hidden" asp-for="@empleado.Id" />
+					<a asp-action="Editar" asp-route-id="@empleado.Id" class="btn btn-primary" >Editar</a>
+					<a asp-action="Borrar" asp-route-id="@empleado.Id" class="btn btn-danger" >Borrar</a>
+				</div>
+
+			</div>
+		</div>
+	}
+</div>
