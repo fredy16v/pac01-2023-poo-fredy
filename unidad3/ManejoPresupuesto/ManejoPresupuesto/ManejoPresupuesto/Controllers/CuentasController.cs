@@ -67,6 +67,30 @@ namespace ManejoPresupuesto.Controllers
             return RedirectToAction("Index");
 		}
 
+		public async Task<IActionResult> Editar(int id)
+		{
+			var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+			var cuenta = await repositorioCuentas.ObtenerPorId(id, usuarioId);
+
+			if (cuenta is null)
+			{
+				return RedirectToAction("NoEncontrado", "Home");
+			}
+
+			var modelo = new CuentaCreacionViewModel
+			{
+				Id = cuenta.Id,
+				Nombre = cuenta.Nombre,
+				Descripcion = cuenta.Descripcion,
+				Balance = cuenta.Balance,
+				TipoCuentaId = cuenta.TipoCuentaId,
+			};
+
+			modelo.TiposCuenta = await ObtenerTiposCuenta(usuarioId);
+
+			return View(modelo);
+		}
+
 		private async Task<IEnumerable<SelectListItem>> ObtenerTiposCuenta(int usuarioId)//para el combobox
 		{
 			var tiposCuenta = await repositorioTiposCuenta.Obtener(usuarioId);

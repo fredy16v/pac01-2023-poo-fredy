@@ -38,5 +38,34 @@ namespace ManejoPresupuesto.Servicios
 				WHERE tc.UsuarioId = @UsuarioId
 				ORDER BY Orden", new { usuarioId });
 		}
+
+		public async Task<Cuenta> ObtenerPorId(int id, int usuarioId)
+		{
+			using var connection = new SqlConnection(connectionString);
+			return await connection.QueryFirstOrDefaultAsync<Cuenta>
+				(@"SELECT 
+					cu.Id,
+					cu.Nombre,
+					cu.Balance,
+					cu.Descripcion,
+					cu.TipoCuentaId
+				FROM Cuentas AS cu
+				INNER JOIN TiposCuenta AS tc
+				ON tc.Id = cu.TipoCuentaId
+				WHERE tc.UsuarioId = @UsuarioId AND cu.Id = @Id;", new {id, usuarioId});
+		}
+
+		public async Task Actualizar(CuentaCreacionViewModel modelo)
+		{
+			using var connection = new SqlConnection(connectionString);
+
+			await connection.ExecuteAsync
+				(@"UPDATE Cuentas
+				SET Nombre = @Nombre,
+					Balance = @Balance,
+					Descripcion = @Descripcion,
+					TipoCuentaId = @TipoCuentaId
+				WHERE Id = @Id", modelo);
+		}
 	}
 }

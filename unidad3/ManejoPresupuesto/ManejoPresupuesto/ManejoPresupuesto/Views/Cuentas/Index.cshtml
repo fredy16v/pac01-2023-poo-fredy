@@ -59,10 +59,12 @@
 				}
 
 				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="@dataBsTarget">
-					<span>
-						<strong>@tipoCuenta.TipoCuenta</strong>
+					<span class="me-3">
+						<span>
+							<strong>@tipoCuenta.TipoCuenta</strong>
+						</span>
+						<span class="@claseTipoCuenta">@FormatearBalance(tipoCuenta.Balance)</span>
 					</span>
-					<span class="@claseTipoCuenta">@FormatearBalance(tipoCuenta.Balance)</span>
 				</button>
 			</h2>
 
@@ -75,6 +77,8 @@
 							<li class="list-group-item">
 								<span>
 									<strong>@cuenta.Nombre</strong>
+									<a asp-action="Editar" asp-route-id="@cuenta.Id" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a>
+									<a asp-action="Borrar" asp-route-id="@cuenta.Id" class="btn btn-danger"><i class="bi bi-trash"></i></a>
 								</span>
 								<span class="@claseCuenta">
 									@FormatearBalance(cuenta.Balance)

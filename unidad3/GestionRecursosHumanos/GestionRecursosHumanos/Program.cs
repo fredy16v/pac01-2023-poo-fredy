@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IRepositorioCargos, RepositorioCargos>();
 builder.Services.AddTransient<IRepositorioEmpleados, RepositorioEmpleados>();
+builder.Services.AddTransient<IRepositorioSalarios, RepositorioSalarios>();
+builder.Services.AddTransient<IRepositorioDepartamentos, RepositorioDepartamentos>();
 builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
 
 var app = builder.Build();

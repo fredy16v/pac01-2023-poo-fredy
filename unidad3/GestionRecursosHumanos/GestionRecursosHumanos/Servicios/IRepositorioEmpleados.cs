@@ -4,7 +4,9 @@ namespace GestionRecursosHumanos.Servicios
 {
 	public interface IRepositorioEmpleados
 	{
-		Task<Empleado> Crear(Empleado empleado);
-		Task<IEnumerable<Empleado>> Obtener(int usuarioId);
+		Task Actualizar(EmpleadoCreacionViewModel modelo);
+		Task Crear(Empleado empleado);
+		Task<IEnumerable<Empleado>> ObtenerEmpleados(int usuarioId);
+		Task<Empleado> ObtenerPorId(int id, int usuarioId);
 	}
 }

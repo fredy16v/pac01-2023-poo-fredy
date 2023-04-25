@@ -1,0 +1,13 @@
+﻿@model Salario
+
+@{
+	ViewData["Title"] = "Borrar el Salario";
+}
+
+<h3>Esta seguro que quiere eliminar el salario de @Model.Nombre?</h3>
+
+<form asp-action="BorrarConfirm">
+	<input asp-for="Id" type="hidden"/>
+	<button type="submit" class="btn btn-danger">Borrar</button>
+	<a asp-action="Index" class="btn btn-primary">Cancelar</a>
+</form>

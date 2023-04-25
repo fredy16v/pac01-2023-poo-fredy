@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GestionRecursosHumanos.Validaciones;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestionRecursosHumanos.Models
 {
@@ -8,6 +9,7 @@ namespace GestionRecursosHumanos.Models
 		public int UsuarioId { get; set; }
 		[Display(Name = "Nombre")]
 		[Required(ErrorMessage = "El {0} es requerido.")]
+		[PrimeraLetraMayuscula]
 		public string Nombre { get; set; }
 
 		[Display(Name = "Fecha de Nacimiento")]
@@ -33,6 +35,7 @@ namespace GestionRecursosHumanos.Models
 		public string Departamento { get; set; }
 
 		[Required(ErrorMessage = "El {0} es requerido.")]
+		public int CargoId { get; set; }
 		public string Cargo { get; set; }
 
 		public string Estado { get; set; }

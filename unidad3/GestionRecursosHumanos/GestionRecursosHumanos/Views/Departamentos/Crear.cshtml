@@ -1,0 +1,40 @@
+﻿@model DepartamentoCreacionViewModel
+
+@{
+	ViewData["Title"] = "Crear Departamento";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-controller="Departamentos" asp-action="Crear">
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Nombre"></label>
+		<input asp-for="Nombre" class="form-control" />
+		<span asp-validation-for="Nombre" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Codigo"></label>
+		<input asp-for="Codigo" class="form-control" />
+		<span asp-validation-for="Codigo" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="SalarioId" class="form-label"></label>
+		<select asp-for="SalarioId" asp-items="Model." class="form-select"></select>
+		<span asp-validation-for="SalarioId" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Descripcion"></label>
+		<input asp-for="Descripcion" class="form-control" />
+		<span asp-validation-for="Descripcion" class="text-danger"></span>
+	</div>
+
+	<button class="btn btn-primary" type="submit">Guardar</button>
+
+	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

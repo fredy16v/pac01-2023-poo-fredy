@@ -1,0 +1,38 @@
+﻿@model Salario
+
+@{
+	ViewData["Title"] = "Crear un Salario";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h5>Aqui se mirara el rango de salario segun el departamento. Ejemplos: Ventas, Finanzas, Desarrodador, etc.</h5>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-controller="Salarios" asp-action="Crear">
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Nombre"></label>
+		<input asp-for="Nombre" class="form-control" />
+		<span asp-validation-for="Nombre" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="RangoMaximo"></label>
+		<input asp-for="RangoMaximo" class="form-control" />
+		<span asp-validation-for="RangoMaximo" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="RangoMinimo"></label>
+		<input asp-for="RangoMinimo" class="form-control" />
+		<span asp-validation-for="RangoMinimo" class="text-danger"></span>
+	</div>
+
+	<button class="btn btn-primary" type="submit">Guardar</button>
+	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

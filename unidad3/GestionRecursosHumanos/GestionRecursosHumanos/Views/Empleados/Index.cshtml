@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Empleado>
+﻿@model IEnumerable<IndexEmpleadosViewModel>
 
 @{
 	ViewData["Title"] = "Lista de Empleados";
@@ -10,9 +10,30 @@
 <div class="row justify-content-center justify-content-lg-start mt-3 gap-3">
 	@foreach (var empleado in Model)
 	{
-		<div class="card col-4 p-0">
-			<div class="card-body">
-				
+		<div class="card">
+			<div class="face front custom-card col-4 p-0">
+				<div>
+					<img class="icono mb-3 mt-2" src="~/imagenes/IconoPerfil.gif" alt="Icono de usuario" />
+					<h5 class="card-title text-center mt-1">@empleado.Nombre</h5>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.FechaNacimiento</h6>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.Email</h6>
+					<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
+					<h6 class="card-subtitle text-center">@empleado.Departamento</h6>
+				</div>
+
+				<div>
+					<div class="row justify-content-center mb-3">
+						<input type="hidden" asp-for="@empleado.Id" />
+						<div class="p-3">
+							<a asp-action="Editar" asp-route-id="@empleado.Id" class="btn btn-primary custom-button">Editar</a>
+						</div>
+						<a asp-action="Borrar" asp-route-id="@empleado.Id" class="btn btn-danger custom-button">Borrar</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="face back">
 				<h5 class="card-title text-center mt-1">@empleado.Nombre</h5>
 				<h6 class="card-subtitle mb-2 text-center">@empleado.FechaNacimiento</h6>
 				<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
@@ -20,14 +41,7 @@
 				<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
 				<h6 class="card-subtitle text-center">@empleado.Departamento</h6>
 			</div>
-			<div>
-				<div class="row justify-content-center mb-2">
-					<input type="hidden" asp-for="@empleado.Id" />
-					<a asp-action="Editar" asp-route-id="@empleado.Id" class="btn btn-primary" >Editar</a>
-					<a asp-action="Borrar" asp-route-id="@empleado.Id" class="btn btn-danger" >Borrar</a>
-				</div>
-
-			</div>
 		</div>
+
 	}
 </div>

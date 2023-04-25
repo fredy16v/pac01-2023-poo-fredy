@@ -1,4 +1,4 @@
-﻿@model Empleado
+﻿@model EmpleadoCreacionViewModel
 
 @{
 	ViewData["Title"] = "Crear un Nuevo Empleado";
@@ -6,9 +6,9 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-controller="Empleados" asp-action="Crear">
+<form asp-action="Crear">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Nombre"></label>
@@ -62,9 +62,9 @@
 	</div>
 
 	<div class="mb-3">
-		<label class="form-label" asp-for="Cargo"></label>
-		<input asp-for="Cargo" class="form-control" />
-		<span asp-validation-for="Cargo" class="text-danger"></span>
+		<label asp-for="CargoId" class="form-label"></label>
+		<select asp-for="CargoId" asp-items="Model.Cargos" class="form-select"></select>
+		<span asp-validation-for="CargoId" class="text-danger"></span>
 	</div>
 
 	<div class="mb-3">
