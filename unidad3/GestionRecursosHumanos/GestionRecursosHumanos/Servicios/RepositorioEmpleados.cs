@@ -18,9 +18,9 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 			var id = await connection.QuerySingleAsync<int>
 				($@"INSERT INTO Empleados
-                (Nombre, FechaNacimiento, CargoId, Departamento, Genero, Email, Telefono, FechaIngreso, Salario, Estado, Descripcion)
+                (Nombre, FechaNacimiento, CargoId, Genero, Email, Telefono, FechaIngreso, Salario, Estado, Descripcion)
                 VALUES
-                (@Nombre, @FechaNacimiento, @CargoId, @Departamento, @Genero, @Email, @Telefono, @FechaIngreso, @Salario, @Estado, @Descripcion);
+                (@Nombre, @FechaNacimiento, @CargoId, @Genero, @Email, @Telefono, @FechaIngreso, @Salario, @Estado, @Descripcion);
                 SELECT SCOPE_IDENTITY()", empleado);
 		}
 
@@ -37,7 +37,6 @@ namespace GestionRecursosHumanos.Servicios
 					em.Telefono,
 					em.FechaIngreso,
 					em.Salario,
-					em.Departamento,
 					em.Estado,
 					em.Descripcion,
 					ca.Nombre AS TipoCuenta
@@ -52,11 +51,15 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryFirstOrDefaultAsync<Empleado>
 				(@"SELECT 
-					cu.Id,
-					cu.Nombre,
-					cu.Balance,
-					cu.Descripcion,
-					cu.TipoCuentaId
+					em.Id,
+					em.Nombre,
+					em.FechaIngreso,
+					em.FechaNacimiento,
+					em.Genero,
+					em.Email,
+					em.Telefono,
+					em.Estado,
+					em.Descripcion
 				FROM Empleados AS em
 				INNER JOIN Cargos AS ca
 				ON ca.Id = em.CargoId
@@ -75,7 +78,6 @@ namespace GestionRecursosHumanos.Servicios
 					Email = @Email,
 					Telefono = @Telefono,
 					Salario = @Salario,
-					Departamento = @Departamento,
 					Estado = @Estado,
 					FechaIngreso = @FechaIngreso,
 					TipoCuentaId = @TipoCuentaId

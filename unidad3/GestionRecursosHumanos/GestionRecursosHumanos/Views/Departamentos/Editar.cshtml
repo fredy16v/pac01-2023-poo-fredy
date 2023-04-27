@@ -1,14 +1,15 @@
-﻿@model Departamento
+﻿@model EditarDepartamentoViewModel
 
 @{
-	ViewData["Title"] = "Crear Departamento";
+	ViewData["Title"] = "Editar Tipo de Cuenta";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-controller="Departamentos" asp-action="Crear">
+<form asp-controller="Departamentos" asp-action="Editar">
+	<input asp-asp-for="Id" type="hidden" />
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Nombre"></label>

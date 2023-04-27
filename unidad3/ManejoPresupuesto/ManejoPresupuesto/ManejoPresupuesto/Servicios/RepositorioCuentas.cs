@@ -67,5 +67,11 @@ namespace ManejoPresupuesto.Servicios
 					TipoCuentaId = @TipoCuentaId
 				WHERE Id = @Id", modelo);
 		}
+
+		public async Task Borrar(int id)
+		{
+			using var connection = new SqlConnection(connectionString);
+			await connection.ExecuteAsync("DELETE Cuentas WHERE Id = @Id", new { id });
+		}
 	}
 }

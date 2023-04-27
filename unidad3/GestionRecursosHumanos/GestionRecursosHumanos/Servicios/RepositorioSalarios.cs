@@ -19,32 +19,35 @@ namespace GestionRecursosHumanos.Servicios
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryAsync<Salario>
-				(@"SELECT Id, Nombre, RangoMaximo, RangoMinimo
-				FROM Salarios
-				WHERE UsuarioId = @UsuarioId", new { usuarioId });
+				(@"SELECT sa.Id, de.Nombre AS Departamento, sa.RangoMaximo, sa.RangoMinimo
+				FROM Salarios sa
+				INNER JOIN Departamentos de
+				ON de.Id = sa.DepartamentoId
+				WHERE de.UsuarioId = @UsuarioId", new { usuarioId });
+				//(@"SELECT Id, RangoMaximo, RangoMinimo
+				//FROM Salarios
+				//WHERE UsuarioId = @UsuarioId", new { usuarioId });
 		}
-
-		public async Task<Salario> Crear(Salario salario)
+		//empezamos aqui
+		public async Task Crear(Salario salario)
 		{
 			using var connection = new SqlConnection(connectionString);
-			await connection.QuerySingleAsync<int>
+			var id = await connection.QuerySingleAsync<int>
 				($@"INSERT INTO Salarios
-                (Nombre, UsuarioId, RangoMaximo, RangoMinimo)
+                (DepartamentoId, UsuarioId, RangoMaximo, RangoMinimo)
                 VALUES
-                (@Nombre, @UsuarioId, @RangoMaximo, @RangoMinimo);
+                (@DepartamentoId, @UsuarioId, @RangoMaximo, @RangoMinimo);
                 SELECT SCOPE_IDENTITY();", salario);
-
-			return salario;
 		}
 
-		public async Task Editar(EditarSalarioViewModel salario)
-		{
-			using var connection = new SqlConnection(connectionString);
-			await connection.ExecuteAsync
-				(@"UPDATE Salarios 
-				SET Nombre = @Nombre, RangoMaximo = @RangoMaximo, RangoMinimo = @RangoMinimo
-				WHERE Id = @Id", salario);
-		}
+		//public async Task Editar(EditarSalarioViewModel salario)
+		//{
+		//	using var connection = new SqlConnection(connectionString);
+		//	await connection.ExecuteAsync
+		//		(@"UPDATE Salarios 
+		//		SET Nombre = @Nombre, RangoMaximo = @RangoMaximo, RangoMinimo = @RangoMinimo
+		//		WHERE Id = @Id", salario);
+		//}
 
 		public async Task Borrar(int id)
 		{
@@ -56,9 +59,23 @@ namespace GestionRecursosHumanos.Servicios
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryFirstOrDefaultAsync<Salario>
-				(@"SELECT Id, Nombre, RangoMaximo, RangoMinimo
+				//(@"SELECT s.Id, s.RangoMaximo, s.RangoMinimo, d.Nombre AS DepartamentoNombre
+				//FROM Salarios s
+				//LEFT JOIN Departamentos d ON s.DepartamentoId = d.Id
+				//WHERE s.Id = @Id AND s.UsuarioId = @UsuarioId", new { id, usuarioId });
+				(@"SELECT Id, RangoMaximo, RangoMinimo, DepartamentoId
 				FROM Salarios
 				WHERE Id = @Id AND UsuarioId = @UsuarioId", new { id, usuarioId });
+		}
+
+		public async Task Actualizar(SalarioCreacionViewModel modelo)
+		{
+			using var connection = new SqlConnection(connectionString);
+
+			await connection.ExecuteAsync
+				(@"UPDATE Salarios 
+				SET RangoMaximo = @RangoMaximo, RangoMinimo = @RangoMinimo, DepartamentoId = @DepartamentoId
+				WHERE Id = @Id", modelo);
 		}
 
 		public async Task<bool> Existe(string nombre, int usuarioId)

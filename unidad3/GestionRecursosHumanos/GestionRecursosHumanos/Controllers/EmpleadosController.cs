@@ -22,13 +22,35 @@ namespace GestionRecursosHumanos.Controllers
 		{
 			var usuarioId = servicioUsuarios.ObtenerUsuarioId();
 			var empleadosConCargo = await repositorioEmpleados.ObtenerEmpleados(usuarioId);
-			var modelo = empleadosConCargo
-				.GroupBy(x => x.Cargo)
-				.Select(grupo => new IndexEmpleadosViewModel
+			var empleados = await repositorioEmpleados.ObtenerEmpleados(usuarioId);
+
+			var modelo = new ObtenerEmpleadosViewModel
+			{
+				Empleados = empleados.Select(empleado => new EmpleadoDTO 
 				{
-					Cargo = grupo.Key,
-					Empleados = grupo.AsEnumerable()
-				}).ToList();
+					Id = empleado.Id,
+					Nombre = empleado.Nombre,
+					FechaNacimiento = empleado.FechaNacimiento,
+					NombreCargo = empleado.Cargo,
+					NombreDepartamento = empleado.Departamento,
+					Genero = empleado.Genero,
+					Email = empleado.Email,
+					Telefono = empleado.Telefono,
+					FechaIngreso = empleado.FechaIngreso,
+					Salario = empleado.Salario,
+					Estado = empleado.Estado,
+					Descripcion = empleado.Descripcion,
+
+				})
+			};
+
+			//var modelo = empleadosConCargo
+			//	.GroupBy(x => x.Cargo)
+			//	.Select(grupo => new IndexEmpleadosViewModel
+			//	{
+			//		Cargo = grupo.Key,
+			//		Empleados = grupo.AsEnumerable()
+			//	}).ToList();
 
 			return View(modelo);
 		}
@@ -48,11 +70,11 @@ namespace GestionRecursosHumanos.Controllers
 		{
 			var usuarioId = servicioUsuarios.ObtenerUsuarioId();
 
-			if (!ModelState.IsValid)
-			{
-				modelo.Cargos = await ObtenerCargos(usuarioId);
-				return View(modelo);
-			}
+			//if (!ModelState.IsValid)
+			//{
+			//	modelo.Cargos = await ObtenerCargos(usuarioId);
+			//	return View(modelo);
+			//}
 
 			var cargo = await repositorioCargos.ObtenerPorId(modelo.CargoId, usuarioId);
 			if (cargo is null)

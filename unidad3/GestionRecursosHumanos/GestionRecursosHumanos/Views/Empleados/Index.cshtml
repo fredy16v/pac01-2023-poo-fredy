@@ -1,4 +1,4 @@
-﻿@model IEnumerable<IndexEmpleadosViewModel>
+﻿@model ObtenerEmpleadosViewModel
 
 @{
 	ViewData["Title"] = "Lista de Empleados";
@@ -8,7 +8,7 @@
 <a asp-action="Crear" class="btn btn-primary">Crear Nuevo</a>
 
 <div class="row justify-content-center justify-content-lg-start mt-3 gap-3">
-	@foreach (var empleado in Model)
+	@foreach (var empleado in Model.Empleados)
 	{
 		<div class="card">
 			<div class="face front custom-card col-4 p-0">
@@ -19,7 +19,17 @@
 					<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
 					<h6 class="card-subtitle mb-2 text-center">@empleado.Email</h6>
 					<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
-					<h6 class="card-subtitle text-center">@empleado.Departamento</h6>
+				</div>
+			</div>
+
+			<div class="face back">
+				<div>
+
+					<h5 class="card-title text-center mt-1">@empleado.Nombre</h5>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.FechaNacimiento</h6>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
+					<h6 class="card-subtitle mb-2 text-center">@empleado.Email</h6>
+					<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
 				</div>
 
 				<div>
@@ -33,15 +43,6 @@
 				</div>
 			</div>
 
-			<div class="face back">
-				<h5 class="card-title text-center mt-1">@empleado.Nombre</h5>
-				<h6 class="card-subtitle mb-2 text-center">@empleado.FechaNacimiento</h6>
-				<h6 class="card-subtitle mb-2 text-center">@empleado.Genero</h6>
-				<h6 class="card-subtitle mb-2 text-center">@empleado.Email</h6>
-				<h6 class="card-subtitle text-center">@empleado.Telefono</h6>
-				<h6 class="card-subtitle text-center">@empleado.Departamento</h6>
-			</div>
 		</div>
-
 	}
 </div>

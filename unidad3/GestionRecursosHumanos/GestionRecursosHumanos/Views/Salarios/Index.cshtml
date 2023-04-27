@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Salario>
+﻿@model ObtenerSalariosViewModel
 
 @{
 	ViewData["Title"] = "Rango de Salarios";
@@ -21,15 +21,15 @@
 			<th>Rango Maximo</th>
 			<th>Rango Minimo</th>
 			<th>Acciones</th>
-			
+
 		</tr>
 	</thead>
 
 	<tbody>
-		@foreach (var salario in Model)
+		@foreach (var salario in Model.Salarios)
 		{
 			<tr>
-				<td>@salario.Nombre</td>
+				<td>@salario.DepartamentoNombre</td>
 				<td>@FormatearNumero(salario.RangoMaximo)</td>
 				<td>@FormatearNumero(salario.RangoMinimo)</td>
 				<td>

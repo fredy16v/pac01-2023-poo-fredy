@@ -8,13 +8,11 @@ namespace GestionRecursosHumanos.Models
 	{
 		public int Id { get; set; }
 
-		[Display(Name = "Nombre")]
-		[Required(ErrorMessage = "El {0} es requerido.")]
-		[PrimeraLetraMayuscula]
-		[Remote(action: "VerificarExisteSalario", "Salarios")]
 		public string Nombre { get; set; }
 
 		public int UsuarioId { get; set; }
+		public int DepartamentoId { get; set; }
+		public string Departamento { get; set; }
 
 		[Display(Name = "Rango Maximo")]
 		[Required(ErrorMessage = "El {0} es requerido.")]

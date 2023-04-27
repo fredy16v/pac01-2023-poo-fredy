@@ -19,7 +19,7 @@ namespace GestionRecursosHumanos.Servicios
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryAsync<Departamento>
-				(@"SELECT Id, UsuarioId, SalarioId, Nombre, Codigo, Descripcion
+				(@"SELECT Id, Nombre, Codigo, Descripcion
 				FROM Departamentos
 				WHERE UsuarioId = @UsuarioId", new { usuarioId });
 		}
@@ -29,22 +29,49 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 			await connection.QuerySingleAsync<int>
 				($@"INSERT INTO Departamentos
-                (Nombre, Codigo, Descripcion, SalarioId)
+                (Nombre, Codigo, Descripcion, UsuarioId)
                 VALUES
-                (@Nombre, @Codigo, @Descripcion, @SalarioId);
+                (@Nombre, @Codigo, @Descripcion, @UsuarioId);
                 SELECT SCOPE_IDENTITY();",
 				departamento);
 
 			return departamento;
 		}
 
+		public async Task Editar(EditarDepartamentoViewModel departamento)
+		{
+			using var connection = new SqlConnection(connectionString);
+			await connection.ExecuteAsync
+				(@"UPDATE Departamentos 
+				SET Nombre = @Nombre, Codigo = @Codigo, Descripcion = @Descripcion
+				WHERE Id = @Id", departamento);
+		}
+
+		public async Task Borrar(int id)
+		{
+			using var connection = new SqlConnection(connectionString);
+			await connection.ExecuteAsync("DELETE FROM Departamentos WHERE Id = @Id", new { id });
+		}
+
 		public async Task<Departamento> ObtenerPorId(int id, int usuarioId)
 		{
 			using var connection = new SqlConnection(connectionString);
 			return await connection.QueryFirstOrDefaultAsync<Departamento>
-				(@"SELECT Id, Nombre, Codigo, UsuarioId, SalarioId, Descripcion
+				(@"SELECT Id, Nombre, Codigo, UsuarioId, Descripcion
 				FROM Departamentos
 				WHERE Id = @Id AND UsuarioId = @UsuarioId", new { id, usuarioId });
+		}
+
+		public async Task<bool> Existe(string nombre, int usuarioId)
+		{
+			using var connection = new SqlConnection(connectionString);
+			var existe = await connection.QueryFirstOrDefaultAsync<int>
+				(@"SELECT 1
+				FROM Departamentos
+				WHERE Nombre = @Nombre AND UsuarioId = @UsuarioId",
+				new { nombre, usuarioId });
+
+			return existe == 1;
 		}
 	}
 }
