@@ -5,12 +5,13 @@
 .custom-card {
     width: 369px;
     border-radius: 16px;
-    background: #e0e0e0;
+    background: #33FFF6;
     box-shadow: 10px 10px 20px #b1b1b1, -10px -10px 20px #ffffff;
 }
 
 .custom-button {
-    width: 356px;
+    width: 340px;
+    margin-left: 5px;
     border: none;
     border-radius: 16px;
     box-shadow: 5px 5px 5px #293d5e, -5px -5px 5px #ffffff;
@@ -29,6 +30,9 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 2px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 10px 10px 14px #a7aaaf, -10px -10px 14px #ffffff;
+    position: absolute;
+    top: 0;
+    left: 150px;
 }
 
 .card {
@@ -36,18 +40,18 @@
     width: 369px;
     border: none;
 }
-.card .face {
-    /*position: absolute;*/
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: .5s;
-}
+    .card .face {
+        /*position: absolute;*/
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transition: .5s;
+    }
 
     .card .front {
         width: 356px;
         position: absolute;
-        background: #e0e0e0;
+        background: #B0F7FA;
         box-shadow: 10px 10px 20px #b1b1b1, -10px -10px 20px #ffffff;
         transform: perspective(600px) rotateY(0deg);
     }
@@ -69,3 +73,12 @@
     .card:hover .back {
         transform: perspective(600px) rotateY(360deg);
     }
+
+.banner {
+    position: relative;
+    text-align: center;
+    height: 120px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    width: 100%;
+}
