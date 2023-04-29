@@ -10,12 +10,18 @@ namespace GestionRecursosHumanos.Controllers
 		private readonly IRepositorioEmpleados repositorioEmpleados;
 		private readonly IServicioUsuarios servicioUsuarios;
 		private readonly IRepositorioCargos repositorioCargos;
+		private readonly IRepositorioDepartamentos repositorioDepartamentos;
 
-		public EmpleadosController(IRepositorioEmpleados repositorioEmpleados, IServicioUsuarios servicioUsuarios, IRepositorioCargos repositorioCargos)
+		public EmpleadosController
+			(IRepositorioEmpleados repositorioEmpleados, 
+			IServicioUsuarios servicioUsuarios, 
+			IRepositorioCargos repositorioCargos,
+			IRepositorioDepartamentos repositorioDepartamentos)
 		{
 			this.repositorioEmpleados = repositorioEmpleados;
 			this.servicioUsuarios = servicioUsuarios;
 			this.repositorioCargos = repositorioCargos;
+			this.repositorioDepartamentos = repositorioDepartamentos;
 		}
 
 		public async Task<IActionResult> Index()
@@ -40,7 +46,6 @@ namespace GestionRecursosHumanos.Controllers
 					Salario = empleado.Salario,
 					Estado = empleado.Estado,
 					Descripcion = empleado.Descripcion,
-
 				})
 			};
 
@@ -61,6 +66,7 @@ namespace GestionRecursosHumanos.Controllers
 			var modelo = new EmpleadoCreacionViewModel();
 
 			modelo.Cargos = await ObtenerCargos(usuarioId);
+			modelo.Departamentos = await ObtenerDepartamentos(usuarioId);
 
 			return View(modelo);
 		}
@@ -73,6 +79,7 @@ namespace GestionRecursosHumanos.Controllers
 			//if (!ModelState.IsValid)
 			//{
 			//	modelo.Cargos = await ObtenerCargos(usuarioId);
+			//	modelo.Departamentos = await ObtenerDepartamentos(usuarioId);
 			//	return View(modelo);
 			//}
 
@@ -121,6 +128,12 @@ namespace GestionRecursosHumanos.Controllers
 		{
 			var cargos = await repositorioCargos.Obtener(usuarioId);
 			return cargos.Select(x => new SelectListItem(x.Nombre, x.Id.ToString()));
+		}
+
+		private async Task<IEnumerable<SelectListItem>> ObtenerDepartamentos(int usuarioId)
+		{
+			var departamentos = await repositorioDepartamentos.Obtener(usuarioId);
+			return departamentos.Select(x => new SelectListItem(x.Nombre, x.Id.ToString()));
 		}
 	}
 }

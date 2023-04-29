@@ -1,19 +1,22 @@
 ﻿@model IEnumerable<Cargo>
 
 @{
-	ViewData["Title"] = "Listado Cargos";
+	ViewData["Title"] = "Lista de Cargos";
 }
 
 <h1>@ViewData["Title"]</h1>
-<h5>Los cargos de usaran para agrupar a los empreados segun su cargo. Ejemplos: Gerentes General, Gerente de ventas, Analista de datos, etc.</h5>
+<h5>Los cargos se usaran para agrupar a los empleados segun su cargo. Ejemplos: Gerentes General, Gerente de ventas, Analista de datos, etc.</h5>
 
-<a asp-action="Crear" class="btn btn-primary">Crear Nuevo</a>
+<a asp-action="Crear" class="btn1">Crear Nuevo</a>
 
+<p></p>
 <table class="table">
 	<thead>
 		<tr>
-			<th>Acciones</th>
 			<th>Nombre</th>
+			<th>Codigo</th>
+			<th>Descripcion</th>
+			<th>Acciones</th>
 		</tr>
 	</thead>
 
@@ -21,12 +24,14 @@
 		@foreach (var cargo in Model)
 		{
 			<tr>
+				<td>@cargo.Nombre</td>
+				<td>@cargo.Codigo</td>
+				<td>@cargo.Descripcion</td>
 				<td>
 					<input type="hidden" asp-for="@cargo.Id" />
-					<a asp-action="Editar" asp-route-id="@cargo.Id" class="btn btn-primary" >Editar</a>
-					<a asp-action="Borrar" asp-route-id="@cargo.Id" class="btn btn-danger" >Borrar</a>
+					<a asp-action="Editar" asp-route-id="@cargo.Id" class="btn btn-outline-primary">Editar</a>
+					<a asp-action="Borrar" asp-route-id="@cargo.Id" class="btn btn-outline-danger">Borrar</a>
 				</td>
-				<td>@cargo.Nombre</td>
 			</tr>
 		}
 	</tbody>

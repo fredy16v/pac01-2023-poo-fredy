@@ -1,38 +1,34 @@
-﻿@model Cargo
+﻿@model EditarCargoViewModel
 
 @{
-	ViewData["Title"] = "Crear Cargo";
+	ViewData["Title"] = "Editar Cargo";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-controller="Cargos" asp-action="Crear">
+<form asp-controller="Cargos" asp-action="Editar" class="Custom-form">
+	<input asp-asp-for="Id" type="hidden" />
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Nombre"></label>
-		<input asp-for="Nombre" class="form-control" />
+		<input asp-for="Nombre" class="form-control"/>
 		<span asp-validation-for="Nombre" class="text-danger"></span>
 	</div>
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Codigo"></label>
-		<input asp-for="Codigo" class="form-control" />
+		<input asp-for="Codigo" class="form-control"/>
 		<span asp-validation-for="Codigo" class="text-danger"></span>
 	</div>
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Descripcion"></label>
-		<input asp-for="Descripcion" class="form-control" />
+		<textarea asp-for="Descripcion" class="form-control"></textarea>
 		<span asp-validation-for="Descripcion" class="text-danger"></span>
 	</div>
 
-	<button class="btn btn-primary" type="submit">Guardar</button>
-
-	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+	<button class="btnG" type="submit">Guardar</button>
+	<a asp-action="Index" class="btnC">Cancelar</a>
 </form>
-
-@section Scripts {
-	<partial name="_ValidationScriptsPartial" />
-}

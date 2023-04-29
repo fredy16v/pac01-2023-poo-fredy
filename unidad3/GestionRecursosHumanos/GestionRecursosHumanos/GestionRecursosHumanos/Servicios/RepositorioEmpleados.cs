@@ -18,9 +18,9 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 			var id = await connection.QuerySingleAsync<int>
 				($@"INSERT INTO Empleados
-                (Nombre, FechaNacimiento, CargoId, Genero, Email, Telefono, FechaIngreso, Salario, Estado, Descripcion)
+                (Nombre, FechaNacimiento, CargoId, Genero, Email, Telefono, FechaIngreso, Salario, Estado, Descripcion, UsuarioId, DepartamentoId)
                 VALUES
-                (@Nombre, @FechaNacimiento, @CargoId, @Genero, @Email, @Telefono, @FechaIngreso, @Salario, @Estado, @Descripcion);
+                (@Nombre, @FechaNacimiento, @CargoId, @Genero, @Email, @Telefono, @FechaIngreso, @Salario, @Estado, @Descripcion, @UsuarioId, @DepartamentoId);
                 SELECT SCOPE_IDENTITY()", empleado);
 		}
 

@@ -1,0 +1,15 @@
+﻿@model Cargo
+
+@{
+	ViewData["Title"] = "Borrar cargo";
+}
+
+
+<form asp-action="BorrarConfirm" class="Custom-form">
+	<h3>¿Seguro de Borrar "@Model.Nombre"?</h3>
+	<h5>Esta accion no se puede deshacer</h5>
+
+	<input asp-for="Id" type="hidden" />
+	<button type="submit" class="btnB">Borrar</button>
+	<a asp-action="Index" class="btnC">Cancelar</a>
+</form>
