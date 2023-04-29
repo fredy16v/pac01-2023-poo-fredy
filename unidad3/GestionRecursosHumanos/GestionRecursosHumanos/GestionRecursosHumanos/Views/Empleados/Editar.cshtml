@@ -1,0 +1,91 @@
+﻿@model EmpleadoCreacionViewModel
+
+@{
+	ViewData["Title"] = "Crear un Nuevo Empleado";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<form asp-action="Editar">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Nombre"></label>
+		<input asp-for="Nombre" class="form-control" />
+		<span asp-validation-for="Nombre" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="FechaNacimiento"></label>
+		<input asp-for="FechaNacimiento" class="form-control" type="date"/>
+		<span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Genero" class="form-label"></label>
+		<select asp-for="Genero" class="form-select">
+			<option value="Hombre">Hombre</option>
+			<option value="Mujer">Mujer</option>
+		</select>
+		<span asp-validation-for="Genero" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Email"></label>
+		<input asp-for="Email" class="form-control" />
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Telefono"></label>
+		<input asp-for="Telefono" class="form-control" />
+		<span asp-validation-for="Telefono" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="FechaIngreso"></label>
+		<input asp-for="FechaIngreso" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+		<span asp-validation-for="FechaIngreso" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Salario"></label>
+		<input asp-for="Salario" class="form-control" />
+		<span asp-validation-for="Salario" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="DepartamentoId" class="form-label"></label>
+		<select asp-for="DepartamentoId" asp-items="Model.Departamentos" class="form-select"></select>
+		<span asp-validation-for="DepartamentoId" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="CargoId" class="form-label"></label>
+		<select asp-for="CargoId" asp-items="Model.Cargos" class="form-select"></select>
+		<span asp-validation-for="CargoId" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="Estado" class="form-label"></label>
+		<select asp-for="Estado" class="form-select">
+			<option value="Activo">Activo</option>
+			<option value="Inactivo">Inactivo</option>
+		</select>
+		<span asp-validation-for="Estado" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Descripcion"></label>
+		<input asp-for="Descripcion" class="form-control" />
+		<span asp-validation-for="Descripcion" class="text-danger"></span>
+	</div>
+
+	<button class="btn btn-primary" type="submit">Guardar</button>
+	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

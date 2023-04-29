@@ -13,13 +13,13 @@
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Nombre"></label>
-		<input asp-for="Nombre" class="form-control"/>
+		<input asp-for="Nombre" class="form-control" />
 		<span asp-validation-for="Nombre" class="text-danger"></span>
 	</div>
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Codigo"></label>
-		<input asp-for="Codigo" class="form-control"/>
+		<input asp-for="Codigo" class="form-control" />
 		<span asp-validation-for="Codigo" class="text-danger"></span>
 	</div>
 
@@ -32,3 +32,7 @@
 	<button class="btnG" type="submit">Guardar</button>
 	<a asp-action="Index" class="btnC">Cancelar</a>
 </form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

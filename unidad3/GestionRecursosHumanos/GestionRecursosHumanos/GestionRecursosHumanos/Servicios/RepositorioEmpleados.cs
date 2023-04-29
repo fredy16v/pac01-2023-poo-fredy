@@ -59,6 +59,7 @@ namespace GestionRecursosHumanos.Servicios
 					em.Email,
 					em.Telefono,
 					em.Estado,
+					em.Salario,
 					em.Descripcion
 				FROM Empleados AS em
 				INNER JOIN Cargos AS ca
@@ -71,18 +72,25 @@ namespace GestionRecursosHumanos.Servicios
 			using var connection = new SqlConnection(connectionString);
 
 			await connection.ExecuteAsync
-				(@"UPDATE Cuentas
+				(@"UPDATE Empleados
 				SET Nombre = @Nombre,
 					FechaNacimiento = @FechaNacimiento,
+					CargoId = @CargoId,
+					DepartamentoId = @DepartamentoId,
 					Genero = @Genero,
 					Email = @Email,
 					Telefono = @Telefono,
 					Salario = @Salario,
 					Estado = @Estado,
 					FechaIngreso = @FechaIngreso,
-					TipoCuentaId = @TipoCuentaId
 					Descripcion = @Descripcion
 				WHERE Id = @Id", modelo);
+		}
+
+		public async Task Borrar(int id)
+		{
+			using var connection = new SqlConnection(connectionString);
+			await connection.ExecuteAsync("DELETE Empleados WHERE Id = @Id", new { id });
 		}
 	}
 }

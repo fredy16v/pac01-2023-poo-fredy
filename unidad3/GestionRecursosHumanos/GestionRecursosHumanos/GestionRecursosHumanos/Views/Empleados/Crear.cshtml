@@ -18,7 +18,7 @@
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="FechaNacimiento"></label>
-		<input asp-for="FechaNacimiento" class="form-control" />
+		<input asp-for="FechaNacimiento" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
 		<span asp-validation-for="FechaNacimiento" class="text-danger"></span>
 	</div>
 
@@ -45,7 +45,7 @@
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="FechaIngreso"></label>
-		<input asp-for="FechaIngreso" class="form-control" />
+		<input asp-for="FechaIngreso" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
 		<span asp-validation-for="FechaIngreso" class="text-danger"></span>
 	</div>
 
