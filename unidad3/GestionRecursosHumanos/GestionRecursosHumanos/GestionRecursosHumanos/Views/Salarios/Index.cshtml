@@ -12,8 +12,8 @@
 <h1>@ViewData["Title"]</h1>
 <h5>Aqui se mirara el rango de salario segun el departamento. Ejemplos: Ventas, Finanzas, Desarrodador, etc.</h5>
 
-<a asp-action="Crear" class="btn btn-primary">Crear Nuevo</a>
-
+<a asp-action="Crear" class="btn1">Crear Nuevo</a>
+<p></p>
 <table class="table">
 	<thead>
 		<tr>
@@ -34,8 +34,8 @@
 				<td>@FormatearNumero(salario.RangoMinimo)</td>
 				<td>
 					<input type="hidden" asp-for="@salario.Id" class="ids" />
-					<a class="btn btn-primary" asp-action="Editar" asp-route-id="@salario.Id">Editar</a>
-					<a asp-action="Borrar" asp-route-id="@salario.Id" class="btn btn-danger">Borrar</a>
+					<a class="btn btn-outline-primary" asp-action="Editar" asp-route-id="@salario.Id">Editar</a>
+					<a asp-action="Borrar" asp-route-id="@salario.Id" class="btn btn-outline-danger">Borrar</a>
 				</td>
 			</tr>
 		}

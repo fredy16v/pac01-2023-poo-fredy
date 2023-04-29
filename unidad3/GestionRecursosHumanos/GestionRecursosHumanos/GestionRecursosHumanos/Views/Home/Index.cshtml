@@ -5,37 +5,46 @@
 <div class="text-center">
     <h1>Bienvenidos</h1>
     <h4>Departamento de Recursos Humanos</h4>
-<h4>En esta pagina encontrar todos las funciones que puede gestionar, desde crear/modificar empleados, hasta poder gestionar las capacitaciones de la empresa</h4>
+    <h4>En esta pagina encontrar todos las funciones que puede gestionar, desde crear/modificar empleados, hasta poder gestionar las capacitaciones de la empresa</h4>
 </div>
+<br />
+<br />
+<h5>Ingrese al contenido que quiera visualizar</h5>
+<div class="row justify-content-center text-lg-center imagenText">
+    <div class="col-auto">
+        <label>EMPLEADOS</label>
+        <a asp-action="Index" asp-controller="Empleados">
+            <img width="200" src="~/imagenes/Empleados.png" alt="Empleados" class="imagen" />
+        </a>
+    </div>
 
-<div class="row">
-        <div class="col-3">
-            <label>SALARIOS</label>
-            <a asp-action="Index" asp-controller="Salarios">
-                <img class="img-fluid" width="200" src="~/imagenes/icono-del-vector-de-salarios-empleados-símbolo-ilustración-remuneración-signo-asignación-o-logotipo-para-sitios-web-móviles-161354931.jpg" alt="salarios"/>
-            </a>
-        </div>
+    <div class="col-auto">
+        <label>SALARIOS</label>
+        <a asp-action="Index" asp-controller="Salarios">
+            <img width="200" src="~/imagenes/Salarios.png" alt="salarios" class="imagen" />
+        </a>
+    </div>
 
-        <div class="col-3">
-            <label>EMPLEADOS</label>
-            <a asp-action="Index" asp-controller="Empleados">
-                <img width="200" src="~/imagenes/recruitment-line-two-color-icon-vector.jpg" alt="Empleados"/>
-            </a>
-        </div>
+    <div class="col-auto">
+        <label>DEPARTAMENTOS</label>
+        <a asp-action="Index" asp-controller="Departamentos">
+            <img width="200" src="~/imagenes/Departamentos.png" alt="Departamentos" class="imagen" />
+        </a>
+    </div>
 
-        <div class="col-3">
-            <label>CARGOS</label>
-            <a asp-action="Index" asp-controller="Cargos">
-                <img width="200" src="~/imagenes/vectores-de-icono-equipo-algunos-empleados-signo-ilustración-trabajadores-símbolo-desarrollo-logotipo-administración-se-puede-180230787.jpg "alt="Cargos"/>
-            </a>
-        </div>
+    <div class="col-auto">
+        <label>CARGOS</label>
+        <a asp-action="Index" asp-controller="Cargos">
+            <img width="200" src="~/imagenes/Cargos.png" alt="Cargos" class="imagen" />
+        </a>
+    </div>
 
-        <div class="col-3">
-            <label>DEPARTAMENTOS</label>
-            <a asp-action="Index" asp-controller="Departamentos">
-                <img width="200" src="~/imagenes/png-clipart-fidelity-national-title-company-fidelity-national-financial-real-estate-executive-branch-departments-title-company-text.png" alt="Departamentos"/>
-            </a>
-        </div>
+    <div class="col-auto">
+        <label>CAPACITACIONES</label>
+        <a asp-action="Index" asp-controller="Cargos">
+            <img width="200<" src="~/imagenes/Capacitaciones.png" alt="Capacitaciones" class="imagen" />
+        </a>
+    </div>
 </div>
 
 

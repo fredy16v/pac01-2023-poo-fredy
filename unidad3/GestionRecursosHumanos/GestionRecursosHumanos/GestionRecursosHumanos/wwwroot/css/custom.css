@@ -39,9 +39,7 @@
     position: relative;
     width: 369px;
     border: none;
-    border-radius: 16px;
 }
-
     .card .face {
         /*position: absolute;*/
         width: 100%;
@@ -164,14 +162,14 @@
     cursor: pointer;
 }
 
-.btnC:hover {
-    transition: 783ms;
-    padding: 10px 52px;
-    transform: translateY(-0px);
-    background-color: #fff;
-    color: dimgray;
-    border: solid 2px gray;
-}
+    .btnC:hover {
+        transition: 783ms;
+        padding: 10px 52px;
+        transform: translateY(-0px);
+        background-color: #fff;
+        color: dimgray;
+        border: solid 2px gray;
+    }
 
 /*BTN BORRAR*/
 
@@ -243,30 +241,30 @@
     border: 3px solid black;
 }
 
-.table thead th:nth-child(1) {
-    width: 33%;
-}
+    .table thead th:nth-child(1) {
+        width: 33%;
+    }
 
-.table thead th:nth-child(2) {
-    width: 33%;
-}
+    .table thead th:nth-child(2) {
+        width: 33%;
+    }
 
-.table thead th:nth-child(3) {
-    width: 50%;
-}
+    .table thead th:nth-child(3) {
+        width: 50%;
+    }
 
-.table thead th:nth-child(4) {
-    width: 33%;
-}
+    .table thead th:nth-child(4) {
+        width: 33%;
+    }
 
-.table thead th{
-    color: white;
-    padding: 15px;
-}
+    .table thead th {
+        color: white;
+        padding: 15px;
+    }
 
-.table tbody td {
-    padding: 10px;
-}
+    .table tbody td {
+        padding: 10px;
+    }
 
 tbody tr:nth-child(odd) {
     background-color: #c8dadc;
@@ -276,3 +274,27 @@ tbody tr:nth-child(even) {
     background-color: #dae6e8;
 }
 
+/*IMAGANES*/
+
+.imagenText {
+    font-weight: bold;
+    background: #f9f9f1;
+}
+
+    .imagenText label {
+        text-decoration-line: underline;
+        text-decoration-style: wavy;
+    }
+
+
+.imagen {
+    filter: invert(50%);
+}
+
+    .imagen:hover {
+        filter: opacity(.3);
+        -webkit-transform: rotateY(180deg);
+        -webkit-transform-style: preserve-3d;
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+    }

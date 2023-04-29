@@ -4,10 +4,15 @@
 	ViewData["Title"] = "Borrar departamento";
 }
 
-<h3>Esta seguro que quiere eliminar el tipo de cuenta @Model.Nombre?</h3>
 
-<form asp-action="BorrarConfirm">
+
+<form asp-action="BorrarConfirm" class="Custom-form">
+	<div class="text-center">
+		<h2>¿Esta seguro de eliminar "@Model.Nombre"?</h2>
+		<h5>Tenga en cuenta que esta accion no se puede deshacer</h5>
+	</div>
+
 	<input asp-for="Id" type="hidden" />
-	<button type="submit" class="btn btn-danger">Borrar</button>
-	<a asp-action="Index" class="btn btn-primary">Cancelar</a>
+	<button type="submit" class="btnB">Borrar</button>
+	<a asp-action="Index" class="btnC">Cancelar</a>
 </form>

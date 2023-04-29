@@ -1,14 +1,14 @@
 ﻿@model EditarDepartamentoViewModel
 
 @{
-	ViewData["Title"] = "Editar Tipo de Cuenta";
+	ViewData["Title"] = "Editar Departamento";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-controller="Departamentos" asp-action="Editar">
+<form asp-controller="Departamentos" asp-action="Editar" class="Custom-form">
 	<input asp-asp-for="Id" type="hidden" />
 
 	<div class="mb-3">
@@ -25,13 +25,13 @@
 
 	<div class="mb-3">
 		<label class="form-label" asp-for="Descripcion"></label>
-		<input asp-for="Descripcion" class="form-control" />
+		<textarea asp-for="Descripcion" class="form-control"></textarea>
 		<span asp-validation-for="Descripcion" class="text-danger"></span>
 	</div>
 
-	<button class="btn btn-primary" type="submit">Guardar</button>
+	<button class="btnG" type="submit">Guardar</button>
 
-	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+	<a asp-action="Index" class="btnC">Cancelar</a>
 </form>
 
 @section Scripts {

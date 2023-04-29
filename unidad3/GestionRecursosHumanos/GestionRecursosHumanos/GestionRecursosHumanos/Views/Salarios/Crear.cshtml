@@ -1,38 +1,40 @@
 ﻿@model SalarioCreacionViewModel
 
 @{
-	ViewData["Title"] = "Crear un Salario";
+    ViewData["Title"] = "Crear un Salario";
 }
 
-<h1>@ViewData["Title"]</h1>
-<h5>Aqui se mirara el rango de salario segun el departamento. Ejemplos: Ventas, Finanzas, Desarrodador, etc.</h5>
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+    <h5>Aqui podra crear el rango de salario segun el departamento. Ejemplos: Ventas, Finanzas, Desarrodador, etc.</h5>
+</div>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-controller="Salarios" asp-action="Crear">
+<form asp-controller="Salarios" asp-action="Crear" class="Custom-form">
 
-	<div class="mb-3">
-		<label asp-for="DepartamentoId" class="form-label"></label>
-		<select asp-for="DepartamentoId" asp-items="Model.Departamentos" class="form-select"></select>
-		<span asp-validation-for="DepartamentoId" class="text-danger"></span>
-	</div>
+    <div class="mb-3">
+        <label asp-for="DepartamentoId" class="form-label"></label>
+        <select asp-for="DepartamentoId" asp-items="Model.Departamentos" class="form-select"></select>
+        <span asp-validation-for="DepartamentoId" class="text-danger"></span>
+    </div>
 
-	<div class="mb-3">
-		<label class="form-label" asp-for="RangoMaximo"></label>
-		<input asp-for="RangoMaximo" class="form-control" />
-		<span asp-validation-for="RangoMaximo" class="text-danger"></span>
-	</div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="RangoMaximo"></label>
+        <input asp-for="RangoMaximo" class="form-control" />
+        <span asp-validation-for="RangoMaximo" class="text-danger"></span>
+    </div>
 
-	<div class="mb-3">
-		<label class="form-label" asp-for="RangoMinimo"></label>
-		<input asp-for="RangoMinimo" class="form-control" />
-		<span asp-validation-for="RangoMinimo" class="text-danger"></span>
-	</div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="RangoMinimo"></label>
+        <input asp-for="RangoMinimo" class="form-control" />
+        <span asp-validation-for="RangoMinimo" class="text-danger"></span>
+    </div>
 
-	<button class="btn btn-primary" type="submit">Guardar</button>
-	<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    <button class="btnG" type="submit">Guardar</button>
+    <a asp-action="Index" class="btnC">Cancelar</a>
 </form>
 
 @section Scripts {
-	<partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }

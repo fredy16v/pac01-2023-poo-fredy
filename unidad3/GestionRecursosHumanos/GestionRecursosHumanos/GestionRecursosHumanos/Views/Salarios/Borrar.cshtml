@@ -1,13 +1,18 @@
 ﻿@model SalarioDTO
 
 @{
-	ViewData["Title"] = "Borrar el Salario";
+    ViewData["Title"] = "Borrar el Salario";
 }
 
-<h3>Esta seguro que quiere eliminar el salario de @Model.DepartamentoNombre?</h3>
 
-<form asp-action="BorrarConfirm">
-	<input asp-for="Id" type="hidden"/>
-	<button type="submit" class="btn btn-danger">Borrar</button>
-	<a asp-action="Index" class="btn btn-primary">Cancelar</a>
+<form asp-action="BorrarConfirm" class="Custom-form">
+
+    <div class="text-center">
+        <h3>Esta seguro de eliminar @Model.DepartamentoNombre?</h3>
+        <h5>Tenga en cuenta que esta accion no se puede deshacer</h5>
+    </div>
+
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btnB">Borrar</button>
+    <a asp-action="Index" class="btnC">Cancelar</a>
 </form>
