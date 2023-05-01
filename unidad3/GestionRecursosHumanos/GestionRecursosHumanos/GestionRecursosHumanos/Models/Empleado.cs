@@ -32,13 +32,13 @@ namespace GestionRecursosHumanos.Models
 		public int Salario { get; set; }
 
 		//[Required(ErrorMessage = "El {0} es requerido.")]
-		public string Departamento { get; set; }
+		public string? Departamento { get; set; }
 		[Display(Name = "Departamento")]
 		public int DepartamentoId { get; set; }
 		[Display(Name = "Cargo")]
 		//[Required(ErrorMessage = "El {0} es requerido.")]
 		public int CargoId { get; set; }
-		public string Cargo { get; set; }
+		public string? Cargo { get; set; }
 
 		public string Estado { get; set; }
 

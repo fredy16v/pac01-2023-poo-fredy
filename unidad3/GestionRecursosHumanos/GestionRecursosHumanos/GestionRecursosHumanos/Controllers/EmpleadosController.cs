@@ -75,6 +75,7 @@ namespace GestionRecursosHumanos.Controllers
 		public async Task<IActionResult> Crear(EmpleadoCreacionViewModel modelo)
 		{
 			var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+			modelo.UsuarioId = usuarioId;
 
 			if (!ModelState.IsValid)
 			{

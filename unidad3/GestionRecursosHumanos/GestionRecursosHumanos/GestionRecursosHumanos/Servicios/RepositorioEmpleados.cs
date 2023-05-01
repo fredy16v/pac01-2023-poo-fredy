@@ -39,7 +39,7 @@ namespace GestionRecursosHumanos.Servicios
 					em.Salario,
 					em.Estado,
 					em.Descripcion,
-					ca.Nombre AS TipoCuenta
+					ca.Nombre AS Empleado
 				FROM Empleados em
 				INNER JOIN Cargos ca
 				ON ca.Id = em.CargoId

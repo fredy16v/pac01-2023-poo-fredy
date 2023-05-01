@@ -63,9 +63,11 @@ namespace GestionRecursosHumanos.Servicios
 				//FROM Salarios s
 				//LEFT JOIN Departamentos d ON s.DepartamentoId = d.Id
 				//WHERE s.Id = @Id AND s.UsuarioId = @UsuarioId", new { id, usuarioId });
-				(@"SELECT Id, RangoMaximo, RangoMinimo, DepartamentoId
-				FROM Salarios
-				WHERE Id = @Id AND UsuarioId = @UsuarioId", new { id, usuarioId });
+				(@"SELECT sa.Id, sa.RangoMaximo, sa.RangoMinimo, sa.DepartamentoId, de.Nombre
+				FROM Salarios AS sa
+				INNER JOIN Departamentos AS de
+				ON de.Id = sa.DepartamentoId
+				WHERE sa.Id = @Id AND sa.UsuarioId = @UsuarioId", new { id, usuarioId });
 		}
 
 		public async Task Actualizar(SalarioCreacionViewModel modelo)

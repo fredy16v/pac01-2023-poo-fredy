@@ -1,0 +1,49 @@
+﻿@model ObtenerCapacitacionesViewModel
+
+@{
+	ViewData["Title"] = "Capacitaciones";
+
+	//string FormatearNumero(int rango)
+	//{
+	//	return Math.Abs(rango).ToString("N");//N para aplicar las coma en los miles
+	//}
+}
+
+<h1>@ViewData["Title"]</h1>
+<h5>Aqui se mirara las capacitaciones que se necesitan para cada departamento y empleado. Ejemplos: Ventas, Finanzas, Desarrodador, etc.</h5>
+
+<a asp-action="Crear" class="btn1">Crear Nuevo</a>
+<p></p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Nombre de la Capacitacion</th>
+			<th>Nombre Empleado</th>
+			<th>Departamento</th>
+			<th>Fecha</th>
+			<th>Duracion</th>
+			<th>Costo</th>
+			<th>Descripcion</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var capacitacion in Model.Capacitaciones)
+		{
+			<tr>
+				<td>@capacitacion.Nombre</td>
+				<td>@capacitacion.NombreEmpleado</td>
+				<td>@capacitacion.NombreDepartamento</td>
+				<td>@capacitacion.Fecha</td>
+				<td>@capacitacion.Duracion</td>
+				<td>@capacitacion.Costo</td>
+				<td>@capacitacion.Descripcion</td>
+				<td>
+					<input type="hidden" asp-for="@capacitacion.Id" class="ids" />
+					<a class="btn btn-outline-primary" asp-action="Editar" asp-route-id="@capacitacion.Id">Editar</a>
+					<a asp-action="Borrar" asp-route-id="@capacitacion.Id" class="btn btn-outline-danger">Borrar</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
